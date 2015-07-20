@@ -1,0 +1,21 @@
+#! /usr/bin/bash
+# Ojuba Software Repos Mirror Generator
+# Mosaab Alzoubi (c) 2015 , WAQF2 License
+###########################################
+
+# Vars
+mirrorsdir="public_html/mirrors"
+mirrors="https://copr-be.cloud.fedoraproject.org/results/moceap/Ojuba"
+repos="epel-7-x86_64 fedora-21-x86_64 fedora-21-i386 fedora-22-x86_64 fedora-22-i386 fedora-rawhide-x86_64 fedora-rawhide-i386"
+# Work
+if [ -e $mirrorsdir ]
+then rm -rf $mirrorsdir
+fi
+mkdir -p $mirrorsdir
+for mirror in $mirrors
+do
+for repo in $repos
+do
+echo "$mirror/$repo/" >> $mirrorsdir/$repo
+done
+done
